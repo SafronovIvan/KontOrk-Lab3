@@ -10,7 +10,7 @@
 1. Создание volume и сети:
    ```bash
    docker volume create safronov-pgdata
-   docker network create safronov-backend
+   docker network create safronov-backend```
 
 2. Запуск базы данных:
 
@@ -21,10 +21,10 @@
     -e POSTGRES_USER=user_80 \
     -e POSTGRES_PASSWORD=pgpass_80 \
     -e POSTGRES_DB=assistant_80 \
-    -v safronov-pgdata:/var/lib/postgresql/data \
-    postgres:15
+    -v safronov-pgdata:/var/lib/postgresql/data postgres:15
+```
 
-3. Запуск приложения
+3. Запуск приложения:
   ```bash
   docker run -d \
     --name safronov-assistant \
@@ -35,3 +35,4 @@
     -e DATABASE_URL="postgresql://user_80:pgpass_80@safronov-postgres:5432/assistant_80" \
     -v $(pwd)/config:/app/config:ro \
     safronov-assistant:v3
+```
